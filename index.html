@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대전 브레드 투어</title>
+    <script src="./resource/js/jquery-3.6.0.min.js"></script>
+    <script src="./resource/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="./resource/bootstrap-5.0.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./resource/fontawesome-free-5.15.3-web/css/all.css">
+    <link rel="stylesheet" href="./resource/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="pc">
+            <div class="logo">
+                <a href="#"><img src="./resource/img/logo.png" alt="로고" title="대전 브레드 투어"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">대전 빵집</a></li>
+                    <li><a href="#">스탬프</a></li>
+                    <li><a href="#">할인 이벤트</a></li>
+                    <li><a href="#">마이페이지</a></li>
+                </ul>
+            </nav>
+            <div class="ect">
+                <a href="#" class="login">로그인</a>
+            </div>
+        </div>
+
+        <div class="mobile">
+            <div class="logo">
+                <a href="#"><img src="./resource/img/logo.png" alt="로고" title="대전 브레드 투어"></a>
+            </div>
+            <div class="side">
+                <input type="checkbox" name="side" id="side" hidden>
+
+                <label for="side" class="ham">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+
+                <div class="m__menu">
+                    <label for="side"></label>
+                    <div class="box">
+                        <div class="item">
+                            <a href="#">로그인</a>
+                        </div>
+                        <div class="item">
+                            <a href="#">대전 빵집</a>
+                        </div>
+                        <div class="item">
+                            <a href="#">스탬프</a>
+                        </div>
+                        <div class="item">
+                            <a href="#">할인 이벤트</a>
+                        </div>
+                        <div class="item">
+                            <a href="#">마이페이지</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <!-- 비주얼 영역 -->
+        <input type="checkbox" id="s-paused" hidden>
+        <input type="radio" id="move-1-2" name="move" hidden>
+        <input type="radio" id="move-1-3" name="move" hidden>
+        <input type="radio" id="move-2-1" name="move" hidden>
+        <input type="radio" id="move-2-3" name="move" hidden>
+        <input type="radio" id="move-3-1" name="move" hidden checked>
+        <input type="radio" id="move-3-2" name="move" hidden>
+        <input type="radio" id="move-1-2-copy" name="move" hidden>
+        <input type="radio" id="move-1-3-copy" name="move" hidden>
+        <input type="radio" id="move-2-1-copy" name="move" hidden>
+        <input type="radio" id="move-2-3-copy" name="move" hidden>
+        <input type="radio" id="move-3-1-copy" name="move" hidden>
+        <input type="radio" id="move-3-2-copy" name="move" hidden>
+
+        <div class="visual wrap mb-4">
+            <div class="visual__image">
+                <div class="image"><img src="./resource/img/4.jpg" alt="비주얼 이미지" title="비주얼"></div>
+                <div class="image"><img src="./resource/img/7.jpg" alt="비주얼 이미지" title="비주얼"></div>
+                <div class="image"><img src="./resource/img/13.jpg" alt="비주얼 이미지" title="비주얼"></div>
+            </div>
+            <div class="visual__box">
+                <div class="box">
+                    <div class="box__item">전 주 한 지</div>
+                    <div class="box__item">온 누 리 에</div>
+                    <div class="box__item">펼 치 다</div>
+                </div>
+                <div class="box">
+                    <div class="box__item">천 년 을 뜨 고</div>
+                    <div class="box__item">천 년 을 잇 는</div>
+                    <div class="box__item">전 주 한 지</div>
+                </div>
+                <div class="box">
+                    <div class="box__item">전 주 한 지 로</div>
+                    <div class="box__item">희 망 을</div>
+                    <div class="box__item">나 누 다</div>
+                </div>
+            </div>
+            <div class="visual__control">
+                <div class="control">
+                    <label for="move-2-1" class="label-2"></label>
+                    <label for="move-2-1-copy" class="label-2-copy"></label>
+                    <label for="move-3-1" class="label-3"></label>
+                    <label for="move-3-1-copy" class="label-3-copy"></label>
+                </div>
+                <div class="control">
+                    <label for="move-1-2" class="label-1"></label>
+                    <label for="move-1-2-copy" class="label-1-copy"></label>
+                    <label for="move-3-2" class="label-3"></label>
+                    <label for="move-3-2-copy" class="label-3-copy"></label>
+                </div>
+                <div class="control">
+                    <label for="move-1-3" class="label-1"></label>
+                    <label for="move-1-3-copy" class="label-1-copy"></label>
+                    <label for="move-2-3" class="label-2"></label>
+                    <label for="move-2-3-copy" class="label-2-copy"></label>
+                </div>
+                <label for="s-paused" style="color: #fff;">
+                    <i class="fas fa-play"></i>
+                    <i class="fas fa-pause"></i>
+                </label>
+            </div>
+        </div>
+        <!-- /비주얼 영역 -->
+        <div class="container">
+            <div class="intro mb-5">
+                <div class="left">
+                    <h3>축제 소개<span class="line" style="margin-left: 10px;"></span></h3>
+                    <p class="text-end">
+                        빵을 좋아하는 사람들 사이에서는 빵집을 찾아 여행하는<br>
+                        '<strong>빵투어</strong>'와 '<strong>빵지순례</strong>'가 하나의 트렌드로 자리 잡았다.
+                    </p>
+                    <p class="text-end">
+                        달콤하기만 한 빵은 옛날 말!<br>
+                        건강까지 잡은 속 편한 빵부터 다채로운 재료의 조합이 돋보이는 빵들까지!<br>
+                        개성 가득한 빵집들은 맛집을 탐방하듯 골라 다니는 재미가 있다.<br>
+                        대전 빵집 총정리! '<strong>2021 대전브레드투어</strong>'를 소개한다!
+                    </p>
+                    <div class="icons fs-1">
+                        <i class="fas fa-car-side"></i>
+                        <i class="fas fa-bread-slice"></i>
+                        <i class="fas fa-map"></i>
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="./resource/img/32.jpg" alt="축제 소개" title="축제 소개 이미지">
+                </div>
+            </div>
+
+            <div class="course mb-5">
+                <h3><span class="line" style="margin-right: 10px;"></span>투어 코스</h3>
+                <div class="box">
+                    <input type="radio" name="map" id="a" hidden checked>
+                    <input type="radio" name="map" id="b" hidden>
+                    <input type="radio" name="map" id="c" hidden>
+                    <input type="radio" name="map" id="d" hidden>
+                    <input type="radio" name="map" id="e" hidden>
+
+                    <div class="map">
+                        <label for="a">1</label>
+                        <label for="b">2</label>
+                        <label for="c">3</label>
+                        <label for="d">4</label>
+                        <label for="e">5</label>
+
+                        <img src="./resource/img/map.png" alt="지도" title="지도">
+                    </div>
+
+                    <div class="infos">
+                        <input type="radio" name="info" id="i-a" hidden checked>
+                        <input type="radio" name="info" id="i-b" hidden>
+                        <input type="radio" name="info" id="i-c" hidden>
+                        
+                        <div class="info box__a text-center">
+                            <div class="top">
+                                <div style="display: flex; align-items: center;">
+                                    <span class="title">성심당 본점</span>
+                                    <button style="margin-left: 10px;" class="btn btn-dark view">지도보기</button>
+                                </div><hr>
+                                <p>대전광역시 중구 은행동 대종로480번길 15</p>
+                            </div>
+                            <div class="mid">
+                                <label for="i-a">방문 계기</label>
+                                <label for="i-b">만족도</label>
+                                <label for="i-c">연도별 방문자</label>
+
+                                <div class="circle">
+                                    <div class="center"></div>
+                                    <div class="left"></div>
+                                    <div class="item1"></div>
+                                    <div class="item2"></div>
+                                    <div class="right"></div>
+                                </div>
+
+                                <div class="bar">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+
+                                <div class="lineg">
+                                    <div class="dot dot1"></div>
+                                    <div class="line line1"></div>
+                                    <div class="dot dot2"></div>
+                                    <div class="line line2"></div>
+                                    <div class="dot dot3"></div>
+                                    <div class="line line3"></div>
+                                    <div class="dot dot4"></div>
+                                </div>
+                            </div>
+                            <div class="bot">
+                                <p>빵집 대표 메뉴 : 튀김소보로/부추빵</p>
+                                <p style="margin: 0;">
+                                    '성심당은 大田의 文化입니다.'
+                                    1956년 대전역 앞 작은 찐빵집에서 시작된 성심당은,
+                                    대전 시민의 자부심과 사랑으로 대한민국 제과업계를 대표하는 향토기업으로 성장하였습니다.
+                                    우리는 가톨릭 정신을 바탕으로 지역 사회에 봉사하는 가치있는 기업이 되고자 합니다.
+                                    또한 '맛있는 빵, 경이로운 빵, 생명의 빵'을 만들어 이웃과 함께 '사랑의 문화'를 이루어 가고자 합니다.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="info box__b text-center">
+                            <div class="top">
+                                <div style="display: flex; align-items: center;">
+                                    <span class="title">콜마르브레드</span>
+                                    <button style="margin-left: 10px;" class="btn btn-dark view">지도보기</button>
+                                </div><hr>
+                                <p>대전광역시 유성구 어은로 52 엘리트독서실</p>
+                            </div>
+                            <div class="mid">
+                                <label for="i-a">방문 계기</label>
+                                <label for="i-b">만족도</label>
+                                <label for="i-c">연도별 방문자</label>
+
+                                <div class="circle">
+                                    <div class="center"></div>
+                                    <div class="left"></div>
+                                    <div class="item1"></div>
+                                    <div class="item2"></div>
+                                    <div class="right"></div>
+                                </div>
+
+                                <div class="bar">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+
+                                <div class="lineg">
+                                    <div class="dot dot1"></div>
+                                    <div class="line line1"></div>
+                                    <div class="dot dot2"></div>
+                                    <div class="line line2"></div>
+                                    <div class="dot dot3"></div>
+                                    <div class="line line3"></div>
+                                    <div class="dot dot4"></div>
+                                </div>
+                            </div>
+                            <div class="bot">
+                                <p>빵집 대표 메뉴 : 끼리바나나빵/아몬드 크로아상/호두 트위스트/쑥떡빵/뉴욕치즈타르트</p>
+                                <p style="margin: 0;">
+                                    어은동에 위치한 '콜마르브레드'에서는 다른 곳에서 보지 못한 빵들이 많이 보일 정도로
+                                    다양한 빵들이 있다.
+                                    그 중 제4회 끼리크림치즈 경연대회 페스츄리부문에서 대상을 수상한 '바나나빵'
+                                    이 곳의 시그니처라고 할 수 있다.
+                                    베이커리류 외에 간단한 음료 메뉴와 상하 유기농 아이스크림도 판매하고 있으며
+                                    아담한 규모의 매장이기 때문에 매장 내 앉아서 먹을 곳은 없고 테이크아웃만 가능하다.
+                                    '콜마르브레드'는 죽동에도 있으며 매장 규모가 좀 더 큰 편이니 참고하면 좋다.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="info box__c text-center">
+                            <div class="top">
+                                <div style="display: flex; align-items: center;">
+                                    <span class="title">아빠의 꿈</span>
+                                    <button style="margin-left: 10px;" class="btn btn-dark view">지도보기</button>
+                                </div><hr>
+                                <p>대전광역시 유성구 신성남로 57</p>
+                            </div>
+                            <div class="mid">
+                                <label for="i-a">방문 계기</label>
+                                <label for="i-b">만족도</label>
+                                <label for="i-c">연도별 방문자</label>
+
+                                <div class="circle">
+                                    <div class="center"></div>
+                                    <div class="left"></div>
+                                    <div class="item1"></div>
+                                    <div class="item2"></div>
+                                    <div class="right"></div>
+                                </div>
+
+                                <div class="bar">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+
+                                <div class="lineg">
+                                    <div class="dot dot1"></div>
+                                    <div class="line line1"></div>
+                                    <div class="dot dot2"></div>
+                                    <div class="line line2"></div>
+                                    <div class="dot dot3"></div>
+                                    <div class="line line3"></div>
+                                    <div class="dot dot4"></div>
+                                </div>
+                            </div>
+                            <div class="bot">
+                                <p>빵집 대표 메뉴 : 검은콩앙금빵/무화과바게트</p>
+                                <p style="margin: 0;">
+                                    유화제, 색소, 제빵계량제 등을 전혀 사용하지 않고 콩유산균과 천연발효종을 사용하여 빵을 만드는 베이커리 집입니다.
+                                    자연 원료로만 만드는 이 집의 빵은 건강에도 좋지만 맛도 좋습니다.
+                                    작고 아담하지만 친숙한 이미지와 진정한 맛을 제공해주는 베이커리입니다.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="info box__d text-center">
+                            <div class="top">
+                                <div style="display: flex; align-items: center;">
+                                    <span class="title">파이한모금</span>
+                                    <button style="margin-left: 10px;" class="btn btn-dark view">지도보기</button>
+                                </div><hr>
+                                <p>대전광역시 동구 자양동 197-8</p>
+                            </div>
+                            <div class="mid">
+                                <label for="i-a">방문 계기</label>
+                                <label for="i-b">만족도</label>
+                                <label for="i-c">연도별 방문자</label>
+
+                                <div class="circle">
+                                    <div class="center"></div>
+                                    <div class="left"></div>
+                                    <div class="item1"></div>
+                                    <div class="item2"></div>
+                                    <div class="right"></div>
+                                </div>
+
+                                <div class="bar">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+
+                                <div class="lineg">
+                                    <div class="dot dot1"></div>
+                                    <div class="line line1"></div>
+                                    <div class="dot dot2"></div>
+                                    <div class="line line2"></div>
+                                    <div class="dot dot3"></div>
+                                    <div class="line line3"></div>
+                                    <div class="dot dot4"></div>
+                                </div>
+                            </div>
+                            <div class="bot">
+                                <p>빵집 대표 메뉴 : 마늘바게트/마카롱/파이</p>
+                                <p style="margin: 0;">
+                                    아기자기하고 조그마한 카페지만 여유를 주는 달콤한 곳, 파이한모금입니다.
+                                    파이류와 페스츄리 종류의 빵들이 맛있기로 유명한 곳입니다.
+                                    빵과 함께 드실 수 있는 커피와 음료도 준비되어 있습니다.
+                                    빵이 빨리 소진되니, 인스타그램을 참고해서 방문하는 것을 추천드립니다.
+                                    당일 오전이나 전날에 빵을 미리 예약해 둘 수 있습니다.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="info box__e text-center">
+                            <div class="top">
+                                <div style="display: flex; align-items: center;">
+                                    <span class="title">르뺑99-1</span>
+                                    <button style="margin-left: 10px;" class="btn btn-dark view">지도보기</button>
+                                </div><hr>
+                                <p>대전광역시 유성구 온천북로33번길 22-3 101호</p>
+                            </div>
+                            <div class="mid">
+                                <label for="i-a">방문 계기</label>
+                                <label for="i-b">만족도</label>
+                                <label for="i-c">연도별 방문자</label>
+
+                                <div class="circle">
+                                    <div class="center"></div>
+                                    <div class="left"></div>
+                                    <div class="item1"></div>
+                                    <div class="item2"></div>
+                                    <div class="right"></div>
+                                </div>
+
+                                <div class="bar">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+
+                                <div class="lineg">
+                                    <div class="dot dot1"></div>
+                                    <div class="line line1"></div>
+                                    <div class="dot dot2"></div>
+                                    <div class="line line2"></div>
+                                    <div class="dot dot3"></div>
+                                    <div class="line line3"></div>
+                                    <div class="dot dot4"></div>
+                                </div>
+                            </div>
+                            <div class="bot">
+                                <p>빵집 대표 메뉴 : 마늘바게트/마카롱/파이</p>
+                                <p style="margin: 0;">
+                                    다양한 종류의 빵을 직접 만드는 베이커리입니다.
+                                    건강한 재료로 만드는 맛있는 빵들이 인기가 좋습니다.
+                                    아주 두툼한 크기의 파이가 대표 메뉴이며, 독특한 맛의 말차 크로와상도 인기입니다.
+                                    케이크류도 맛이 좋아 많은 사람들이 찾습니다.
+                                    빵과 함께 마실수 있는 다양한 음료와 빙수도 준비되어 있습니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="mapModalLabel">지도 보기</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <canvas width="1100" height="1100"></canvas>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event mb-5">
+                <div class="item text-end">
+                    <h3>EVENT<span style="margin-left: 10px;" class="line"></span></h3>
+
+                    <p>
+                        대전 브레드 투어, 그곳으로 여러분을 초대합니다.<br>
+                        대전이 준비한 다양한 혜택과 함께 꿈 같은 축제를 경험해보세요.
+                    </p>
+
+                    <button class="btn-cus">더 보기 +</button>
+                </div>
+                <div class="item">
+                    <img src="./resource/img/event_1.jpg" alt="">
+                </div>
+
+                <div class="item">
+                    <img src="./resource/img/event_2.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="news mb-5">
+                <h3 class="mb-4"><span class="line" style="margin-right: 10px;"></span>공지사항</h3>
+                <input type="radio" name="news" id="notice" hidden checked>
+                <input type="radio" name="news" id="comu" hidden>
+
+                <label class="btn-cus" for="notice">공지사항</label>
+                <label class="btn-cus" for="comu">소통과 참여</label>
+
+                <div class="notice">
+                    <div class="item">
+                        <div class="date">
+                            <div class="day">15일</div>
+                            2021년 09월
+                        </div>
+                        <div class="content">대전빵집상인연합회 매니저 모집 공고(~10.11까지)</div>
+                    </div>
+
+                    <div class="item">
+                        <div class="date">
+                            <div class="day">02일</div>
+                            2021년 07월
+                        </div>
+                        <div class="content">2021 대전광역시 지원사업 안내</div>
+                    </div>
+
+                    <div class="item">
+                        <div class="date">
+                            <div class="day">12일</div>
+                            2021년 06월
+                        </div>
+                        <div class="content">온누리모바일상품권 URL 가맹방법 </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="date">
+                            <div class="day">01일</div>
+                            2021년 05월
+                        </div>
+                        <div class="content">제1대 대전빵집상인연합회 회장 선거</div>
+                    </div>
+
+                    <div class="item">
+                        <div class="date">
+                            <div class="day">08일</div>
+                            2021년 04월
+                        </div>
+                        <div class="content">대전 사회적 거리두기 2단계에 따른 방역지침 안내(04.08 ~ 04.28)</div>
+                    </div>
+                </div>
+
+                <div class="comu">
+                    <div class="item">
+                        <div class="date">
+                            <div class="day">26일</div>
+                            2021년 09월
+                        </div>
+                        <div class="content">[대전빵집상인연합회] 제1회 대전 빵집 상인의 날 행사</div>
+                    </div>
+
+                    <div class="item">
+                        <div class="date">
+                            <div class="day">11일</div>
+                            2021년 09월
+                        </div>
+                        <div class="content">[대전경찰청] 대전 보이스피싱 피해 예방 릴레이 캠페인</div>
+                    </div>
+
+                    <div class="item">
+                        <div class="date">
+                            <div class="day">02일</div>
+                            2021년 08월
+                        </div>
+                        <div class="content">[대전빵집상인연합회] "빵집정보통" 이벤트 안내</div>
+                    </div>
+
+                    <div class="item">
+                        <div class="date">
+                            <div class="day">13일</div>
+                            2021년 07월
+                        </div>
+                        <div class="content">[대전광역시] 코로나 피해 소상공인 전기요금 감면 안내</div>
+                    </div>
+
+                    <div class="item">
+                        <div class="date">
+                            <div class="day">01일</div>
+                            2021년 06월
+                        </div>
+                        <div class="content">[대전광역시] "코로나19" 극복 대전 소상상인 지원 안내</div>
+                    </div>
+                </div>     
+            </div>
+
+            <div class="sponsor">
+                <h3 style="justify-content: flex-end;">후원사 <span style="margin-left: 10px;" class="line"></span></h3>
+                <div class="box pc">
+                    <div class="list">
+                        <div class="item">
+                            <img src="./resource/img/sponsor/1.jpg" alt="후원사" title="후원사">
+                        </div>
+                        <div class="item">
+                            <img src="./resource/img/sponsor/2.jpg" alt="후원사" title="후원사">
+                        </div>
+                        <div class="item">
+                            <img src="./resource/img/sponsor/3.jpg" alt="후원사" title="후원사">
+                        </div>
+                        <div class="item">
+                            <img style="object-fit: cover;" src="./resource/img/sponsor/4.jpg" alt="후원사" title="후원사">
+                        </div>
+                        <div class="item">
+                            <img src="./resource/img/sponsor/5.jpg" alt="후원사" title="후원사">
+                        </div>
+                        <div class="item">
+                            <img src="./resource/img/sponsor/6.jpg" alt="후원사" title="후원사">
+                        </div>
+                        <div class="item">
+                            <img src="./resource/img/sponsor/7.jpg" alt="후원사" title="후원사">
+                        </div>
+                        <div class="item">
+                            <img src="./resource/img/sponsor/8.jpg" alt="후원사" title="후원사">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box mobile">
+                    <div class="list">
+                        <div class="item">
+                            <img src="./resource/img/sponsor/1.jpg" alt="후원사" title="후원사">
+                        </div>
+                        <div class="item">
+                            <img src="./resource/img/sponsor/2.jpg" alt="후원사" title="후원사">
+                        </div>
+                        <div class="item">
+                            <img src="./resource/img/sponsor/3.jpg" alt="후원사" title="후원사">
+                        </div>
+                        <div class="item">
+                            <img style="object-fit: cover;" src="./resource/img/sponsor/4.jpg" alt="후원사" title="후원사">
+                        </div>
+                        <div class="item">
+                            <img src="./resource/img/sponsor/5.jpg" alt="후원사" title="후원사">
+                        </div>
+                        <div class="item">
+                            <img src="./resource/img/sponsor/6.jpg" alt="후원사" title="후원사">
+                        </div>
+                        <div class="item">
+                            <img src="./resource/img/sponsor/7.jpg" alt="후원사" title="후원사">
+                        </div>
+                        <div class="item">
+                            <img src="./resource/img/sponsor/8.jpg" alt="후원사" title="후원사">
+                        </div>
+                        <div class="item">
+                            <img src="./resource/img/sponsor/1.jpg" alt="후원사" title="후원사">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark">
+        <div class="container">
+            <div class="logo">
+                <img src="./resource/img/logo.png" alt="로고" title="로고">
+            </div>
+            <div class="text">
+                <div class="navi mb-2">
+                    <a href="#">이용안내</a>
+                    <a href="#">개인정보 처리방침</a>
+                    <a href="#">저작권 보호정책</a>
+                    <a href="#">도로명 주소안내</a>
+                    <a href="#">사이트오류 신고</a>
+                </div>
+                <p class="text-center" style="color: #ddd; margin: 0;">전라남도 여수시 여문2로 148 
+                <br>COPYRIGHTⓒ 2021 Daejeon Bakery Merchants Association</p>
+            </div>
+            <div class="sns">
+                <a href="#"><i class="fab fa-facebook-square"></i></a>
+                <a href="#"><i class="fab fa-twitter-square"></i></a>
+                <a href="#"><i class="fab fa-instagram-square"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./resource/js/map.js"></script>
+</body>
+</html>
