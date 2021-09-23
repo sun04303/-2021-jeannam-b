@@ -49,6 +49,16 @@ input:focus, select:focus {outline: none;}
 .btn-cus:hover { background-color: #333; color: #fff; }
 .btn-cus:hover::before, .btn-cus:hover::after { width: 100%; }
 
+.blur {
+    animation: blur 2s;
+}
+
+@keyframes blur {
+    0% {filter: blur(2px)}
+    50% {filter: blur(5px);}
+    100% {filter: none;}
+}
+
 /* 헤더 */
 
 header {

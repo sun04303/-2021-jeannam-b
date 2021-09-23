@@ -1,3 +1,5 @@
+let select
+
 let list = []
 let canvas = document.querySelector('#mapCanvas')
 let ctx = canvas.getContext('2d')
@@ -12,20 +14,31 @@ fetch('./resource/js/store_location.json')
 .then(res => res.json())
 .then(data => list = data)
 
+
+let pin = new Image()
 let map1 = new Image()
 let map2 = new Image()
 let map3 = new Image()
 let map4 = new Image()
-map1.src = './resource/img/map/1/1.jpg'
-map1.onload = () => {
-    ctx.drawImage(map1, 0, 0);
-    ctx1.drawImage(canvas, 0, 0)
-}
 
 $('.view').on('click', e => {
     list.forEach(item => {
         if(item.store == e.target.parentNode.childNodes[1].innerHTML) {
-            console.log(item)
+            select = item
+            console.log(select)
+
+            map1.src = './resource/img/map/1/1.jpg'
+            map1.onload = () => {
+                ctx.drawImage(map1, 0, 0);
+                ctx1.drawImage(canvas, 0, 0)
+            }
+
+            window.setTimeout(() => {
+                pin.src = './resource/img/pin.png'
+                pin.onload = () => {
+                    ctx.drawImage(pin, select.x/4, select.y/4)
+                }
+            }, 200);
         }
     })
 
@@ -33,6 +46,7 @@ $('.view').on('click', e => {
 })
 
 canvas.addEventListener('wheel', e => {
+    if(state) return
 
     let chk = multiply
 
@@ -44,8 +58,6 @@ canvas.addEventListener('wheel', e => {
 
     if(multiply == chk) return
 
-    canvas.width = multiply == 1 ? 1100 : multiply == 2 ? 2200 : 4400
-    canvas.height = multiply == 1 ? 1100 : multiply == 2 ? 2200 : 4400
 
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     canvas.style.top = 0
@@ -56,7 +68,11 @@ canvas.addEventListener('wheel', e => {
             map1.src = './resource/img/map/1/1.jpg'
             map1.onload = () => {ctx.drawImage(map1, 0, 0);}
             
-            ctx1.drawImage(canvas, 0, 0)
+            window.setTimeout(() => {
+                pin.src = './resource/img/pin.png'
+                pin.onload = () => {ctx.drawImage(pin, select.x/4, select.y/4)}
+            }, 300)
+
             break;
     
         case 2:
@@ -72,7 +88,11 @@ canvas.addEventListener('wheel', e => {
             map4.src = './resource/img/map/2/2-4.jpg'
             map4.onload = () => {ctx.drawImage(map4, 1100, 1100);}
 
-            ctx1.drawImage(canvas, 0, 0)
+            window.setTimeout(() => {
+                pin.src = './resource/img/pin.png'
+                pin.onload = () => {ctx.drawImage(pin, select.x/2, select.y/2)}
+            }, 400)
+
             break;
 
         case 3:
@@ -136,20 +156,26 @@ canvas.addEventListener('wheel', e => {
             map16.src = './resource/img/map/3/3-16.jpg'
             map16.onload = () => {ctx.drawImage(map16, 3300, 3300);}
             
-            ctx1.drawImage(canvas, 0, 0)
+            window.setTimeout(() => {
+                pin.src = './resource/img/pin.png'
+                pin.onload = () => {ctx.drawImage(pin, select.x, select.y)}
+            }, 400)
+
             break;
 
         default:
             break;
     }
+    
+    ctx1.drawImage(canvas, Math.abs(canvas.style.left.split('px')[0]), Math.abs(canvas.style.top.split('px')[0]), 1100, 1100, 0, 0, 1100, 1100)
+    blur()
 })
 
-canvas.addEventListener('contextmenu', e => {
-    copyCanvas.style.zIndex = 1
-})
 
+canvas.addEventListener('contextmenu', e => {copyCanvas.style.zIndex = 1})
 copyCanvas.addEventListener('wheel', e => {copyCanvas.style.zIndex = 0})
 copyCanvas.addEventListener('mousedown', e => {copyCanvas.style.zIndex = 0})
+
 
 function drag(el) {
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0
@@ -165,6 +191,7 @@ function drag(el) {
     }
     
     function eDrag(e) {
+        if(state) return
         e = e || window.event
         e.preventDefault()
 
@@ -181,8 +208,7 @@ function drag(el) {
         if(el.offsetLeft - pos1 < 0 && el.offsetLeft - pos1 > -max)
             el.style.left = (el.offsetLeft - pos1) + "px"
 
-        Math.abs(el.style.left.split('px')[0])
-        ctx1.drawImage(canvas, Math.abs(el.style.left.split('px')[0]), 0, 0, 0)
+        ctx1.drawImage(canvas, Math.abs(el.style.left.split('px')[0]), Math.abs(el.style.top.split('px')[0]), 1100, 1100, 0, 0, 1100, 1100)
     }
     
     function closeDragE() {
@@ -192,3 +218,13 @@ function drag(el) {
 }
 
 drag(canvas)
+
+function blur() {
+    state = true
+    canvas.classList.add('blur')
+
+    window.setTimeout(() => {
+        state = false
+        canvas.classList.remove('blur')
+    }, 2000)
+}
