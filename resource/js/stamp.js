@@ -60,18 +60,34 @@ $('#cardSelect').on('change', e => {
         let cardImg = new Image()
 
         cardImg.onload = () => {
+            let chkx = 65
+            let chky = 120
+
+            let drawX = 20
+            let drawY = 78
+
+            let circleX = 163
+
             viewctx.drawImage(cardImg, 0, 0)
 
-            console.log(viewctx.getImageData(10, 78, 1, 1))
-            console.log(viewctx.getImageData(70, 78, 1, 1))
+            outer : for(let i = 0; i < 2; i++) {
+                for(let j = 0; j < 4; j++) {
+                    if(viewctx.getImageData(chkx, chky, 1, 1).data[0] == 176) {
+                        viewctx.drawImage(mark, drawX, drawY)
+                        drawCircle(circleX, '#0f0')
+                        break outer
+                    }
 
-            viewctx.drawImage(mark, 20, 78) // x = 20 + 103, y = 78, 173
-            viewctx.drawImage(mark, 123, 78)
-            viewctx.drawImage(mark, 226, 78)
-            viewctx.drawImage(mark, 20, 173)
+                    chkx+=103
+                    drawX+=103
+                    circleX += 15
+                }
 
-            drawCircle(163, '#f00')
-            drawCircle(178, '#0f0')
+                chkx = 65
+                drawX = 120
+                chky = 215
+                drawY = 173
+            }
         }
 
         cardImg.src = event.target.result
@@ -82,7 +98,7 @@ $('#cardSelect').on('change', e => {
 
 function drawCircle (x, color) {
     viewctx.beginPath();
-    viewctx.arc(x, 271, 3, 0, Math.PI*2) // 첫 번째 163
+    viewctx.arc(x, 271, 3, 0, Math.PI*2)
     viewctx.stroke();
     viewctx.fillStyle = color
     viewctx.fill()
