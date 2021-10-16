@@ -1332,3 +1332,17 @@ footer .sns a {
     margin-left: 10px;
     margin-right: 150px;
 }
+
+/* 이벤트 참여 */
+
+.cardEvent .box {
+    padding-top: 40px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.cardEvent .box .line {
+    position: absolute;
+    top: 2%;
+}

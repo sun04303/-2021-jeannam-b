@@ -110,7 +110,7 @@
             <div class="stamp mt-5">
                 <h3><span class="line" style="margin-right: 10px;"></span>스탬프 찍기</h3>
                 <div class="box">
-                    <input type="text" class="form-control my-2 codeInput" placeholder="코드를 입력해주세요.">
+                    <input type="text" class="form-control my-3 codeInput" placeholder="코드를 입력해주세요.">
                     
                     <button class="btn btn-primary cardOpen">완료</button>
                     
@@ -132,7 +132,17 @@
                         </div>
                     </div>
 
-                    <canvas class="stampview" width="432" height="288"></canvas>
+                    <canvas class="stampview" width="432" height="288" hidden></canvas>
+                </div>
+            </div>
+
+            <div class="cardEvent mt-5">
+                <h3><span class="line" style="margin-right: 10px;"></span>이벤트 참여</h3>
+                <button class="btn btn-primary">카드 선택</button>
+
+                <div class="box">
+                    <span class="line"></span>
+                    <canvas id="graph" width="1000" height="750"></canvas>
                 </div>
             </div>
         </div>
