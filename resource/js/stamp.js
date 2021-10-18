@@ -202,8 +202,10 @@ let PieChart = function(option) {
     }
 }
 
-// 돌아가는거 구현해야됨
+gcanvas.addEventListener('click', e => {
+    let arc = Math.PI / (product.length / 2);
+    let rotateCnt = 360*4 + (Math.random() * (359 - 0) + 0)
+    e.target.style.transform += `rotate(${rotateCnt}deg)`
 
-$('#gcanvas').on('click', e => {
-    this.style.transform = rotate('90deg');
+    console.log(product[Math.floor((360 - rotateCnt % 360) / (arc * 180 / Math.PI))])
 })

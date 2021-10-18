@@ -1345,4 +1345,9 @@ footer .sns a {
 .cardEvent .box .line {
     position: absolute;
     top: 2%;
+    z-index: 10;
+}
+
+#graph {
+    transition: 1s;
 }
