@@ -203,9 +203,11 @@ let PieChart = function(option) {
 }
 
 gcanvas.addEventListener('click', e => {
-    let arc = Math.PI / (product.length / 2);
+    let arc = 360 / product.length
     let rotateCnt = 360*4 + (Math.random() * (359 - 0) + 0)
     e.target.style.transform += `rotate(${rotateCnt}deg)`
 
-    console.log(product[Math.floor((360 - rotateCnt % 360) / (arc * 180 / Math.PI))])
+    let result = (rotateCnt%360+90)/arc > 10 ? ((rotateCnt%360+90)/arc) % 10 : (rotateCnt%360+90)/arc
+    
+    console.log(product[9-Math.floor(result)])
 })
