@@ -101,8 +101,9 @@ async function open() {
                 for(let j = 0; j < 4; j++) {
                     if(viewctx.getImageData(chkx, chky, 1, 1).data[0] == 176) {
                         viewctx.drawImage(mark, drawX, drawY)
-                        drawCircle(circleX, '#0f0')
-                        save(fileData)
+                        drawCircle(circleX, '#0f0', viewctx)
+                        save(fileData, view)
+                        $('#stampCard').modal('hide')
                         break outer
                     }
 
@@ -124,11 +125,9 @@ async function open() {
     reader.readAsDataURL(fileData)
 }
 
-async function save(data) {
-    $('#stampCard').modal('hide')
-
+async function save(data, canvas) {
     let newFile
-    view.toBlob((blob => {
+    canvas.toBlob((blob => {
         newFile = new File([blob], data.name, {type: blob.type})
     }))
 
@@ -138,12 +137,12 @@ async function save(data) {
     await location.reload()
 }
 
-function drawCircle (x, color) {
-    viewctx.beginPath();
-    viewctx.arc(x, 271, 3, 0, Math.PI*2)
-    viewctx.stroke();
-    viewctx.fillStyle = color
-    viewctx.fill()
+function drawCircle (x, color, ctx) {
+    ctx.beginPath();
+    ctx.arc(x, 271, 3, 0, Math.PI*2)
+    ctx.stroke();
+    ctx.fillStyle = color
+    ctx.fill()
 }
 
 // 상품 뽑기
@@ -202,12 +201,65 @@ let PieChart = function(option) {
     }
 }
 
-gcanvas.addEventListener('click', e => {
+$('.cardSel').on('click', e => {
+    e.preventDefault()
+    open1()
+})
+
+let eventCanvas = document.querySelector('.eventCanvas')
+let eventCtx = eventCanvas.getContext('2d')
+
+function getResult() {
     let arc = 360 / product.length
     let rotateCnt = 360*4 + (Math.random() * (359 - 0) + 0)
-    e.target.style.transform += `rotate(${rotateCnt}deg)`
+    document.querySelector('#graph').style.transform += `rotate(${rotateCnt}deg)`
 
     let result = (rotateCnt%360+90)/arc > 10 ? ((rotateCnt%360+90)/arc) % 10 : (rotateCnt%360+90)/arc
-    
-    console.log(product[9-Math.floor(result)])
-})
+    return product[(product.length-1)-Math.floor(result)]
+}
+
+async function open1() {
+    [fileHandle] = await window.showOpenFilePicker()
+    let fileData = await fileHandle.getFile()
+
+    let reader = new FileReader()
+
+    reader.onload = event => {
+        let cardImage = new Image()
+
+        cardImage.onload = () => {
+            let drawX = 61
+            let drawY = 128
+
+            let circleX = 163
+
+            eventCtx.drawImage(cardImage, 0, 0)
+            eventCtx.textAlign = 'center'
+            
+            outer : for(let i = 0; i < 2; i++) {
+                for(let j = 0; j < 4; j++) {
+                    if(eventCtx.getImageData(circleX, 271, 1, 1).data[1] == 255) {
+                        let text = getResult()
+                        eventCtx.fillText(text, drawX, drawY)
+                        drawCircle(circleX, '#f00', eventCtx)
+                        save(fileData, eventCanvas)
+                        break outer
+                    } else if(i == 1 && j == 3) {
+                        alert('이벤트 참여 횟수가 부족합니다')
+                        break outer
+                    }
+
+                    drawX+=103
+                    circleX+=15
+                }
+
+                drawX = 61
+                drawY = 215
+            }
+        }
+
+        cardImage.src = event.target.result
+    }
+
+    reader.readAsDataURL(fileData)
+}

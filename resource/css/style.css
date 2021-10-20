@@ -783,6 +783,13 @@ header .mobile .ham span:nth-child(3) {bottom: 0;}
     overflow: hidden;
 }
 
+.course .modal-body .enlarge {
+    display: flex;
+    position: absolute;
+    right: 3%;
+    top: 95%;
+}
+
 .course canvas {position: absolute;}
 #mapCopy {opacity: 0;}
 

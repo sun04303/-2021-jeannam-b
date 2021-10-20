@@ -25,7 +25,6 @@ $('.view').on('click', e => {
     list.forEach(item => {
         if(item.store == e.target.parentNode.childNodes[1].innerHTML) {
             select = item
-            console.log(select)
 
             map1.src = './resource/img/map/1/1.jpg'
             map1.onload = () => {
@@ -46,13 +45,17 @@ $('.view').on('click', e => {
 })
 
 canvas.addEventListener('wheel', e => {
+    enlarge(e.deltaY)
+})
+
+function enlarge(data) {
     if(state) return
 
     let chk = multiply
 
-    if(e.deltaY > 0 && multiply < 3) {
+    if(data > 0 && multiply < 3) {
         multiply++
-    } else if(e.deltaY < 0 && multiply > 1) {
+    } else if(data < 0 && multiply > 1) {
         multiply--
     }
 
@@ -169,7 +172,7 @@ canvas.addEventListener('wheel', e => {
     
     ctx1.drawImage(canvas, Math.abs(canvas.style.left.split('px')[0]), Math.abs(canvas.style.top.split('px')[0]), 1100, 1100, 0, 0, 1100, 1100)
     blur()
-})
+}
 
 
 canvas.addEventListener('contextmenu', e => {copyCanvas.style.zIndex = 1})
